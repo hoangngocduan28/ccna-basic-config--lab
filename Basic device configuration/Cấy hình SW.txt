@@ -1,0 +1,24 @@
+SW
+
+enable
+conf t
+!
+username duanh privilege 15 password duanhn
+!
+ip domain-name lab.local
+crypto generatio rsa
+1024
+!
+line vty 0 4
+ login local
+ transport input ssh
+ exit
+!
+int vlan 1
+ ip address 192.168.1.2 255.255.255.0
+ no shut
+!
+ip default-gateway 192.168.1.1
+!
+end
+write
