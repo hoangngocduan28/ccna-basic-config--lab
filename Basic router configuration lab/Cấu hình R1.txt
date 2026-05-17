@@ -1,0 +1,26 @@
+enable
+config t
+!
+hostname R1
+!
+int e0/0
+  ip address 192.168.1.1 255.255.255.0
+  duplex full 
+  no shut
+!
+line console 0
+  password console
+  login
+  exit
+!
+enable secret enable
+!
+line vty 0 4
+  password telnet
+  login
+  transport input telnet
+  exit
+!
+end
+write
+ 
