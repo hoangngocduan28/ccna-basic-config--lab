@@ -9,7 +9,7 @@ Lab cấu hình Inter-VLAN Routing sử dụng 1 Core Switch (Layer 3) và 2 Acc
 * Kiểm tra định tuyến toàn mạch (End-to-End Ping).
 
 ## Sơ đồ mạng (Topology)
-![Sơ đồ mạng](Topo.png)
+![Sơ đồ mạng](topo.png)
 
 ## Các file cấu hình thiết bị
 * [Cấu hình chi tiết Core      ](Core.txt)
