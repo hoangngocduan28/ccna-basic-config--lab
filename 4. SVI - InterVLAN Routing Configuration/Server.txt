@@ -1,0 +1,16 @@
+Server
+
+enable
+conf t
+!
+hostname Server
+!
+int e0/0
+ ip address 10.100.0.1 255.255.255.0
+ no shut
+ exit
+!
+ip route 0.0.0.0 0.0.0.0 10.100.0.254
+!
+end
+write

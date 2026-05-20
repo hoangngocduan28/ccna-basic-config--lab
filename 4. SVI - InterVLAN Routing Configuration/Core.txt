@@ -1,0 +1,44 @@
+Core 
+
+enable
+conf t
+!
+hostname Core
+!
+ip routing
+!
+vlan 100,101,102
+!
+int vlan 100
+ ip address 10.100.0.254 255.255.255.0
+ no shut
+!
+int e0/0
+ switchport mode access 
+ switchport access vlan 100
+ duplex full
+ no shut
+ exit
+!
+
+int vlan 101
+ ip address 10.101.0.254 255.255.255.0
+ no shut
+!
+int vlan 102
+ ip address 10.102.0.254 255.255.255.0
+ no shut
+!
+int e0/0
+ switchport mode access
+ switchport access vlan 100
+!
+exit
+int range e0/1 - 2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex full
+ no shut
+!
+end
+write
