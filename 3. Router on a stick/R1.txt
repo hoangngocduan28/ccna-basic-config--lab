@@ -1,0 +1,24 @@
+R1
+
+enable
+conf t
+!
+hostname R1
+!
+int e0/0
+ no shut
+!
+int e0/0.1
+ encapsulation dot1q 10
+ ip address 172.16.10.254 255.255.255.0
+!
+int e0/0.2
+ encapsulation dot1q 20
+ ip address 172.16.20.254 255.255.255.0\
+!
+int e0/0.3 
+ encapsulation dot1q 30 
+ ip address 172.16.30.254 255.255.255.0
+!
+end
+write
