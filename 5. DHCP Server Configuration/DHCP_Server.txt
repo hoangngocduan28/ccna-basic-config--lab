@@ -1,0 +1,21 @@
+DHCP_Server
+
+enable 
+conf t
+!
+hostname DHCP_Server
+!
+int e0/0
+ ip address 172.16.10.254 255.255.255.0
+ duplex full
+ no shut
+ exit
+!
+ip dhcp pool vlan_10
+ network 172.16.10.0 255.255.255.0
+ default-route 172.16.10.254
+ dns-server 8.8.8.8
+ lease 0 0 5
+ exit
+!
+ip dhcp excluded-address 172.16.10.1 172.16.10.10
