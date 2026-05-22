@@ -1,0 +1,31 @@
+Access_01
+
+
+ena
+conf t
+!
+hostname Access_01
+!
+vlan 101
+vlan 102
+!
+int e0/0
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ duplex full
+ no shut
+ exit
+!
+int e0/1
+ switchport mode access 
+ switchport access vlan 101
+ no shut
+!
+int e0/2
+ switchport mode access 
+ switchport access vlan 102
+ no shut
+ exit
+!
+end
+write
