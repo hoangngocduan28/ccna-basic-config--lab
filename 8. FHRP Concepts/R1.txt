@@ -1,0 +1,26 @@
+R1
+
+
+enable
+conf t
+!
+hostname R1
+!
+int e0/0 
+ no shut
+ ip address 10.0.0.1 255.255.255.252
+ duplex full
+!
+int e0/1
+ ip address 192.168.1.2 255.255.255.0
+ duplex full
+ standby 1 ip 192.168.1.1
+ standby 1 priority 150
+ standby 1 preempt
+ no shut
+ exit
+!
+ip route 8.8.8.8 255.255.255.255 10.0.0.2
+!
+end
+write
