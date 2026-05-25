@@ -9,8 +9,8 @@ Hệ thống mạng bao gồm:
 - **Switch Access (R3)**: Switch truy cập cho các thiết bị đầu cuối.
 - **End Devices (VPC4, VPC5)**: Máy tính người dùng thuộc các VLAN 10 và 20.
 
-*(Xem chi tiết cấu trúc mạng trong file `Topo.png`)*
-
+## Sơ đồ mạng (Topology)
+![Sơ đồ mạng](Topo.png)
 ## Thành phần file trong Repository
 
 - `Topo.png`: Sơ đồ mạng tổng quan (Topology).
