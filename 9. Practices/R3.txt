@@ -1,0 +1,26 @@
+R3
+
+enable
+conf t
+!
+hostname R3
+!
+vlan 10
+vlan 20
+!
+int range e0/2-3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ no shut
+!
+int e0/0
+ switchport mode access
+ switchport access vlan 10
+ no shut
+!
+int e0/1
+ switchport mode access 
+ switchport access vlan 20
+!
+spanning-tree mode rapid-pvst
+spanning-tree vlan 1-4094 priority 8192

@@ -1,0 +1,51 @@
+R2
+
+enable
+conf t
+!
+hostname R2
+!
+vlan 10
+vlan 20
+!
+int range e0/0-1
+ channel-group 1 mode active
+!
+int po1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ no shut
+!
+int vlan 10
+ ip address 192.168.10.3 255.255.255.0
+ standby 1 ip 192.168.10.1
+ standby 1 priority 90
+ no shut
+ exit
+!
+int vlan 20
+ ip address 192.168.20.3 255.255.255.0
+ standby 1 ip 192.168.20.1
+ standby 1 priority 90
+ no shut
+ exit
+!
+int e0/2
+ no switchport
+ ip address 10.1.0.1 255.255.255.252
+ duplex full
+ no shut
+!
+int e0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ no shut
+ duplex full
+ exit
+!
+ip  route 10.0.0.0 255.255.255.252 10.1.0.2
+ip route 0.0.0.0 0.0.0.0 10.1.0.2
+!
+spanning-tree mode rapid-pvst
+spanning-tree vlan 1-4094 priority 4092
+

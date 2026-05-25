@@ -1,0 +1,27 @@
+R6
+
+enable
+conf t
+!
+hostname R6
+!
+int lo1
+ ip address 8.8.8.8 255.255.255.255
+ no shut
+ exit
+!
+int e0/0
+ ip address 10.0.0.2 255.255.255.252
+ duplex full 
+ no shut
+ exit
+!
+int e0/1
+ ip address 10.1.0.2 255.255.255.252
+ duplex full
+ no shut
+!
+ip route 192.168.10.0 255.255.255.0 10.0.0.1
+ip route 192.168.20.0 255.255.255.0 10.0.0.1
+ip route 192.168.10.0 255.255.255.0 10.1.0.1
+ip route 192.168.20.0 255.255.255.0 10.1.0.1
