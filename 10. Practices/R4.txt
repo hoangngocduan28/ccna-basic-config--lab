@@ -1,0 +1,58 @@
+R4
+
+enable
+conf t
+!
+hostname R4
+!
+vlan 10
+vlan 20
+!
+ip routing
+!
+int e0/2
+ no switchport
+ ip address 10.0.0.2 255.255.255.252
+ duplex full
+ no shut
+ exit
+!
+int vlan 10
+ ip address 10.10.0.2 255.255.255.0
+ ip helper-address 10.0.0.1
+ no shut
+ exit
+!
+int vlan 20
+ ip address 10.20.0.2 255.255.255.0
+ ip helper-address 10.0.0.1
+ no shut 
+ exit
+!
+int range e0/0-1
+ no switchport
+ channel-group 1 mode active
+ no shut
+ exit
+!
+int po1
+ ip address 10.2.0.2 255.255.255.252
+ no shut
+ exit
+!
+int e1/0
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ no shut
+!
+int e0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ no shut
+!
+ip route 192.168.137.0 255.255.255.0 10.0.0.1
+ip route 10.1.0.0 255.255.255.0 10.2.0.1
+ip route 1.1.1.1 255.255.255.255 10.2.0.1
+!
+spanning-tree mode rapid-pvst
+spanning-tree vlan 10,20 root primary

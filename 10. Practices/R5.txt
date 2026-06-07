@@ -1,0 +1,41 @@
+R5
+
+enable
+conf t
+!
+hostname R5
+!
+vlan 10
+vlan 20
+!
+int vlan 10
+ ip address 10.10.0.5 255.255.255.0
+ no shut
+ exit
+!
+int vlan 20
+ ip address 10.20.0.5 255.255.255.0
+ no shut
+ exit
+!
+int e0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ no shut
+!
+int e0/0
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ no shut
+!
+int e0/1
+ switchport mode access
+ switchport access vlan 10
+ no shut
+!
+int e0/2
+ switchport mode access
+ switchport access vlan 20
+ no shut
+!
+spanning-tree mode rapid-pvst

@@ -1,0 +1,18 @@
+R1
+
+enable
+conf t
+!
+hostname R1
+!
+int loop 0
+ ip address 1.1.1.1 255.255.255.255
+ no shut
+ exit
+!
+int e0/0
+ ip address 10.1.0.1 255.255.255.252
+ no shut 
+ exit
+!
+ip route 0.0.0.0 0.0.0.0 10.1.0.2

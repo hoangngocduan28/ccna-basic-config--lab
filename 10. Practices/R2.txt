@@ -1,0 +1,36 @@
+R2
+ 
+enable
+conf t
+! 
+hostname R2
+!
+int e0/0
+ ip address 192.168.137.200 255.255.255.0
+ no shut
+ exit
+!
+int e0/1
+ ip address 10.0.0.1 255.255.255.252
+ duplex full
+ no shut
+ exit
+!
+ip dhcp excluded-address 10.10.0.1 10.10.0.10
+ip dhcp  pool vlan_10
+ network 10.10.0.0 255.255.255.0
+ default-router 10.10.0.2
+ dns-server 8.8.8.8
+!
+ip dhcp excluded-address 10.20.0.1 10.10.0.10
+ip dhcp  pool vlan_20
+ network 10.20.0.0 255.255.255.0
+ default-router 10.20.0.2
+ dns-server 8.8.8.8
+!
+ip route 10.2.0.0 255.255.255.0 10.0.0.2
+ip route 10.1.0.0 255.255.255.0 10.0.0.2
+ip route 1.1.1.1 255.255.255.255 10.0.0.2
+ip route 10.10.0.0 255.255.255.0 10.1.0.2
+ip route 10.20.0.0 255.255.255.0 10.1.0.2 
+!
